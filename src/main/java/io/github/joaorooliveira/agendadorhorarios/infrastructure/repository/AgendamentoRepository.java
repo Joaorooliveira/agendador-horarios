@@ -9,4 +9,6 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
 
     Agendamento findByServicoAndDataHoraAgendamentoBetween(String servico, LocalDateTime dataHoraInicio,
                                                            LocalDateTime dataHoraFinal);
+
+    void deleteByDataHoraAgendamentoAndCliente(LocalDateTime dataHoraAgendamento, String cliente);
 }
