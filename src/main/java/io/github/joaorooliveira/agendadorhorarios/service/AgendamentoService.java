@@ -4,6 +4,7 @@ import io.github.joaorooliveira.agendadorhorarios.infrastructure.entity.Agendame
 import io.github.joaorooliveira.agendadorhorarios.infrastructure.repository.AgendamentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -14,6 +15,7 @@ public class AgendamentoService {
 
     private final AgendamentoRepository agendamentoRepository;
 
+    @Transactional
     public Agendamento salvarAgendamento(Agendamento agendamento) {
         LocalDateTime horaAgendamento = agendamento.getDataHoraAgendamento();
         LocalDateTime horaFim = agendamento.getDataHoraAgendamento().plusHours(1);
@@ -26,4 +28,11 @@ public class AgendamentoService {
         }
         return agendamentoRepository.save(agendamento);
     }
+
+    @Transactional
+    public void deletarAgendamento(LocalDateTime dataHoraAgendamento, String cliente) {
+        agendamentoRepository.deleteByDataHoraAgendamentoAndCliente(dataHoraAgendamento, cliente);
+    }
+
+    
 }
