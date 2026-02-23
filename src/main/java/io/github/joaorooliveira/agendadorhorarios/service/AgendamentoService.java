@@ -38,8 +38,15 @@ public class AgendamentoService {
     public Agendamento buscarAgendamentos(LocalDate data) {
         LocalDateTime primeiraHoraDia = data.atStartOfDay();
         LocalDateTime horaFinalDia = data.atTime(23, 59, 59);
-
         return agendamentoRepository.findByDataHoraAgendamentoBetween(primeiraHoraDia, horaFinalDia);
+    }
 
+    public Agendamento alterarAgendamento(Agendamento agendamento, String cliente, LocalDateTime dataHoraAgendamento) {
+        Agendamento agenda = agendamentoRepository.findByDataHoraAgendamentoAndCliente(dataHoraAgendamento, cliente);
+        if (Objects.isNull(agenda)) {
+            throw new RuntimeException("Horario nao esta preenchido");
+        }
+        agendamento.setId(agenda.getId());
+        return agendamentoRepository.save(agendamento);
     }
 }
