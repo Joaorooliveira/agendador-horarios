@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@RestController
-@RequestMapping("/agendamento")
+@RestController("/agendamentos")
+//@RequestMapping("/agendamento")
 @RequiredArgsConstructor
 public class AgendamentoController {
 
@@ -28,7 +28,7 @@ public class AgendamentoController {
         return ResponseEntity.noContent().build();
     }
 
-    public Agendamento alterarAgendament(Agendamento agendamento, String cliente, LocalDateTime dataHoraAgendamento) {
+    public Agendamento alterarAgendamento(Agendamento agendamento, String cliente, LocalDateTime dataHoraAgendamento) {
         return agendamentoService.alterarAgendamento(agendamento, cliente, dataHoraAgendamento);
     }
 
