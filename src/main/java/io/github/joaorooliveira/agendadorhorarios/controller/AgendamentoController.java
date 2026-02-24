@@ -17,7 +17,7 @@ public class AgendamentoController {
     private final AgendamentoService agendamentoService;
 
     @PostMapping
-    public ResponseEntity<Agendamento> salvarAgendamento(Agendamento agendamento) {
+    public ResponseEntity<Agendamento> salvarAgendamento(@RequestBody Agendamento agendamento) {
         return ResponseEntity.accepted().body(agendamentoService.salvarAgendamento(agendamento));
     }
 
@@ -37,5 +37,10 @@ public class AgendamentoController {
         return ResponseEntity.ok().body(agendamentoService.buscarAgendamentos(data));
     }
 
-
+    @PutMapping
+    public ResponseEntity<Agendamento> alterarAgendamento(@RequestParam String cliente,
+                                                          @RequestParam LocalDateTime dataHoraAgendamento,
+                                                          @RequestBody Agendamento agendamento) {
+        return ResponseEntity.accepted().body(agendamentoService.alterarAgendamento(agendamento, cliente, dataHoraAgendamento));
+    }
 }
