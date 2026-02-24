@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@RestController("/agendamentos")
-//@RequestMapping("/agendamento")
+
+@RestController()
+@RequestMapping("/agendamentos")
 @RequiredArgsConstructor
 public class AgendamentoController {
 
