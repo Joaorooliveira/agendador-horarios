@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RestController
@@ -26,4 +27,15 @@ public class AgendamentoController {
         agendamentoService.deletarAgendamento(dataHoraAgendamento, cliente);
         return ResponseEntity.noContent().build();
     }
+
+    public Agendamento alterarAgendament(Agendamento agendamento, String cliente, LocalDateTime dataHoraAgendamento) {
+        return agendamentoService.alterarAgendamento(agendamento, cliente, dataHoraAgendamento);
+    }
+
+    @GetMapping
+    public ResponseEntity<Agendamento> buscarAgendamentosDia(@RequestParam LocalDate data) {
+        return ResponseEntity.ok().body(agendamentoService.buscarAgendamentos(data));
+    }
+
+
 }
