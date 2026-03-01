@@ -1,5 +1,4 @@
 package io.github.joaorooliveira.agendadorhorarios.infrastructure.entity;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
