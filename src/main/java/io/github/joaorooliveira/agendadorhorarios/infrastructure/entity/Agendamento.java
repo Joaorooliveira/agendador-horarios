@@ -1,4 +1,5 @@
 package io.github.joaorooliveira.agendadorhorarios.infrastructure.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,6 @@ public class Agendamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     private String servico;
 
